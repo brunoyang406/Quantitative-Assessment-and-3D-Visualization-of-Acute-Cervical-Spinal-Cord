@@ -9,9 +9,19 @@ A PyTorch project for **multimodal spinal cord lesion segmentation** from MRI (T
 - **[Dataset format and JSON schema](docs/DATASET.md)** — dataset layout, `train.json` / `val.json` / `test.json` fields, and how paths join with `data_dir` and the `raw/` subfolder. Read this before wiring your data.
 - **[Method and figures](docs/method.md)** — framework overview, model architecture, and uncertainty-boundary visualization.
 
-## Framework Overview
+## Method Figures
+
+### Framework
 
 ![Framework](docs/images/framework.png)
+
+### Model Architecture
+
+![Model Architecture](docs/images/model-architecture.png)
+
+### Uncertainty Boundary
+
+![Uncertainty Boundary](docs/images/uncertainty-boundary.png)
 
 ## Environment
 
