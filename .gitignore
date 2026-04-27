@@ -1,0 +1,102 @@
+# -----------------------------
+# Python bytecode and cache
+# -----------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# -----------------------------
+# Packaging / build artifacts
+# -----------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# -----------------------------
+# Virtual environments
+# -----------------------------
+.venv/
+venv/
+ENV/
+env/
+
+# -----------------------------
+# Conda
+# -----------------------------
+.conda/
+
+# -----------------------------
+# Test and coverage
+# -----------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# -----------------------------
+# Jupyter
+# -----------------------------
+.ipynb_checkpoints/
+
+# -----------------------------
+# IDE/editor settings
+# -----------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -----------------------------
+# OS artifacts
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# Logs and runtime artifacts
+# -----------------------------
+*.log
+logs/
+tmp/
+temp/
+
+# -----------------------------
+# Secrets and local config
+# -----------------------------
+.env
+.env.*
+*.env
+credentials.json
+secrets.json
+
+# -----------------------------
+# Model checkpoints / experiment outputs
+# -----------------------------
+experiments/
+outputs/
+checkpoints/
+runs/
+wandb/
+mlruns/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# -----------------------------
+# Medical imaging data and derived volumes
+# Keep sample assets in docs/images if needed.
+# -----------------------------
+raw/
+data_raw/
+data_processed/
+*.nii
+*.nii.gz
+*.mha
+*.mhd
+*.nrrd
+*.dcm

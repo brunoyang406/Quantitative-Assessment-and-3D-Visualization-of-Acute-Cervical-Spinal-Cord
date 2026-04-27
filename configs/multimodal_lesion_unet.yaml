@@ -1,0 +1,114 @@
+# Multimodal MRI lesion segmentation: UNet-style encoder–decoder, dual CBAM fusion,
+
+trainer_type: multimodal_lesion_unet
+
+data:
+  data_dir: "./spinal_cord_dataset"
+  train_json: "./spinal_cord_dataset/train.json"
+  val_json: "./spinal_cord_dataset/val.json"
+  test_json: "./spinal_cord_dataset/test.json"
+  spatial_size: [16, 512, 256]  # [D, H, W] in RAS
+  target_spacing: [3.3, 0.54, 0.54]  # mm [X, Y, Z]
+  use_spacing: true
+  uncertainty_boundary_dir: null
+
+roi_crop:
+  use_roi_crop: true
+  roi_target_size: [16, 512, 256]
+  roi_margin: [1, 27, 27]  # (D, H, W) pixels
+
+normalization:
+  use_mask: true
+  mask_key: 'cord_mask'
+  # percentile_clip_minmax | percentile_clip_zscore | robust
+  normalization_method: 'percentile_clip_minmax'
+  lower_percentile: 0.5
+  upper_percentile: 99.5
+  robust_scale: 1.35
+  minmax_range: [0, 1]
+
+model:
+  type: multimodal_lesion_unet
+  spatial_dims: 3
+  in_channels: 4
+  include_cord: true
+  include_uncertainty: false
+  lesion_out_channels: 1
+  use_dynunet: false
+  channels: [32, 64, 128, 256, 320, 320, 320, 320]
+  strides: [[1,1,1], [1,2,2], [1,2,2], [2,2,2], [1,2,2], [1,2,2], [1,2,2]]
+  kernel_sizes: null
+  num_res_units: 2
+  norm_name: instance
+  dropout_rate: 0.1
+  cbam_reduction: 16
+  use_swin_bottleneck: true
+  deep_supervision: true
+  deep_supervision_heads: 3
+
+loss:
+  lesion:
+    num_classes: 1
+    use_tversky_focal: false
+    dice_weight: 0.8
+    ce_weight: 0.2
+    sigmoid: true
+    use_deep_supervision: true
+    ds_weights: [0.6, 0.3, 0.1]
+
+training:
+  max_epochs: 300
+  eval_num: 1
+  checkpoint_interval: 10
+  batch_size: 8
+  val_batch_size: 1
+  seed: 42
+  gradient_accumulation_steps: 2
+  gradient_clip_norm: 0.5
+
+use_amp: true
+use_ignite: true
+
+augmentation:
+  flip_prob: 0.5
+  use_rotate: true
+  rotate_prob: 0.3
+  rotate_range: 0.15
+  use_elastic: false
+  elastic_prob: 0.2
+  elastic_sigma_range: [5, 7]
+  elastic_magnitude_range: [100, 200]
+  use_intensity_scale: true
+  intensity_scale_prob: 0.4
+  intensity_scale_factor: 0.2
+  use_gaussian_noise: true
+  gaussian_noise_prob: 0.2
+  gaussian_noise_std: 0.01
+  use_contrast: true
+  contrast_prob: 0.3
+  gamma_range: [0.7, 1.5]
+
+optimizer:
+  type: AdamW
+  lr: 0.001
+  weight_decay: 1e-4
+  eps: 1e-6
+
+scheduler:
+  use_scheduler: true
+  type: cosine_warmup
+  warmup_epochs: 10
+  num_epochs: 300
+  min_lr: 1e-6
+
+dataloader:
+  num_workers: 2
+  val_num_workers: 1
+  pin_memory: false
+
+experiment:
+  root_dir: "./experiments"
+  name: "multimodal_lesion_unet"
+  use_tensorboard: true
+
+device: cuda
