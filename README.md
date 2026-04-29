@@ -108,7 +108,7 @@ python resume_training.py --auto
 =======
 ### 3D VISUALIZATION CASE
 ![3D Visualization Case](case.png)
->>>>>>> 08f8ef9 (Update README and add 3D visualization case figure)
+
 
 ## Configuration
 
@@ -119,4 +119,4 @@ python resume_training.py --auto
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
->>>>>>> 08f8ef9 (Update README and add 3D visualization case figure)
+
