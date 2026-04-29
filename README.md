@@ -41,10 +41,10 @@ The pipeline directly converts raw predictions into an intuitive, anatomically a
 ![Framework](docs/images/framework.png)
 
 ### Model Architecture
-![Model Architecture](docs/images/model-architecture.png)
+![Model Architecture](docs/images/model_architecture.png)
 
 ### Uncertainty Boundary
-![Uncertainty Boundary](docs/images/uncertainty-boundary.png)
+![Uncertainty Boundary](docs/images/uncertainty_boundary.png)
 
 ## Environment Setup
 
@@ -103,20 +103,14 @@ python resume_training.py --auto
 - `3d_sci_visualization_tool/`: post-processing scripts for SCI/MSCC quantification and 3D rendering used in the paper workflow.
 - Detailed I/O definitions and example commands: `docs/3d_visualization_of_acute_cervical_spinal_cord_injury.md`
 - Common scripts: `compute_sci_biomarkers.py`, `compute_mscc_biomarkers.py`, `render_spine_biomarker_3d.py`
-
-
-=======
 ### 3D VISUALIZATION CASE
-![3D Visualization Case](case.png)
-
+![3D Visualization Case](docs/images/case.png)
 
 ## Configuration
 
 - Main config: `configs/multimodal_lesion_unet.yaml`
 - Model type: `model.type: multimodal_lesion_unet`
 
-=======
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
