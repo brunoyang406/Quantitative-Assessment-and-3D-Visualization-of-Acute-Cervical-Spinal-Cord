@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # An Automated Multi-sequence MRI Framework for Quantitative Assessment and 3D Visualization of Acute Cervical Spinal Cord Injury
 
 
@@ -104,7 +104,7 @@ python resume_training.py --auto
 - Detailed I/O definitions and example commands: `docs/3d_visualization_of_acute_cervical_spinal_cord_injury.md`
 - Common scripts: `compute_sci_biomarkers.py`, `compute_mscc_biomarkers.py`, `render_spine_biomarker_3d.py`
 
-<<<<<<< HEAD
+
 =======
 ### 3D VISUALIZATION CASE
 ![3D Visualization Case](case.png)
@@ -115,7 +115,6 @@ python resume_training.py --auto
 - Main config: `configs/multimodal_lesion_unet.yaml`
 - Model type: `model.type: multimodal_lesion_unet`
 
-<<<<<<< HEAD
 =======
 ## License
 
