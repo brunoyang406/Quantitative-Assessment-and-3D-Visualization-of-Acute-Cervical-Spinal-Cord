@@ -1,4 +1,4 @@
-# Spinal cord multimodal lesion segmentation (scl)
+# An Automated Multi-sequence MRI Framework for Quantitative Assessment and 3D Visualization of Acute Cervical Spinal Cord Injury
 
 A PyTorch project for **multimodal spinal cord lesion segmentation** from MRI (T1, T2, T2FS, and optionally cord-based inputs). The default model is a multimodal U–Net-style architecture with dual CBAM, Swin blocks, deep supervision, etc. See `models/` and `configs/`.
 
@@ -76,18 +76,8 @@ python resume_training.py --auto
 - See `docs/3d_visualization_of_acute_cervical_spinal_cord_injury.md` for expected inputs, CLI examples, and output files.
 - Canonical scripts: `compute_sci_biomarkers.py`, `compute_mscc_biomarkers.py`, `render_spine_biomarker_3d.py`.
 
-## Third-Party Dependencies (Analysis Stage)
-
-The analysis pipeline can depend on external preprocessing tools (for example, SpinalTotalSeg and Spinal Cord Toolbox straightening) to generate intermediate files such as straightened cord masks and vertebral-level labels.
-
-- This repository does **not** redistribute those third-party binaries, models, or weights.
-- Install and use those tools separately under their own licenses.
-- In publications, report their exact version/commit and key command parameters.
 
 ## Configuration
 
 - Main config: `configs/multimodal_lesion_unet.yaml` (`model.type: multimodal_lesion_unet`)
 
-## License
-
-Add a `LICENSE` file of your choice in the repository root.
